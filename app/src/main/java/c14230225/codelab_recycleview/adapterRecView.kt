@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ class adapterRecView(private val listWayang: ArrayList<dcWayang>) : RecyclerView
 
     interface OnItemClickCallBack {
         fun onItemClicked(data : dcWayang)
+        fun delData(pos: Int)
     }
     fun setOnItemClickCallBack(onItemClickCallback: OnItemClickCallBack){
         this.onItemClickCallback = onItemClickCallback
@@ -51,6 +53,10 @@ class adapterRecView(private val listWayang: ArrayList<dcWayang>) : RecyclerView
 //            ).show()
             onItemClickCallback.onItemClicked(listWayang[holder.adapterPosition])
         }
+
+        holder._btnHapus.setOnClickListener {
+            onItemClickCallback.delData(position)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -63,6 +69,8 @@ class adapterRecView(private val listWayang: ArrayList<dcWayang>) : RecyclerView
         val _karakterWayang = view.findViewById<TextView>(R.id.karakterWayang)
         val _deskripsiWayang = view.findViewById<TextView>(R.id.deskripsiWayang)
         val _gambarWayang = view.findViewById<ImageView>(R.id.gambarWayang)
+
+        val _btnHapus = view.findViewById<Button>(R.id.btnHapus)
     }
 
 }

@@ -12,8 +12,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/namaWayang"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,12 +35,10 @@
         android:layout_marginEnd="16dp"
         android:text="deskripsi"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/karakterWayang"
-        app:layout_constraintTop_toBottomOf="@+id/karakterWayang"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/karakterWayang" />
 
     <TextView
         android:id="@+id/karakterWayang"
@@ -53,8 +49,21 @@
         android:text="karakter"
         android:textColor="@color/design_default_color_secondary_variant"
         android:textSize="16sp"
+        android:ellipsize="end"
+        android:maxLines="3"
         app:layout_constraintBottom_toTopOf="@+id/deskripsiWayang"
         app:layout_constraintStart_toStartOf="@+id/namaWayang"
         app:layout_constraintTop_toBottomOf="@+id/namaWayang" />
+
+    <Button
+        android:id="@+id/btnHapus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Hapus Data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/deskripsiWayang"
+        app:layout_constraintTop_toBottomOf="@+id/deskripsiWayang" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

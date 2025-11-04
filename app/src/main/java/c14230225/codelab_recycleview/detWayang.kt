@@ -1,12 +1,19 @@
 package c14230225.codelab_recycleview
 
+import android.os.Build
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.squareup.picasso.Picasso
 
 class detWayang : AppCompatActivity() {
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -16,5 +23,23 @@ class detWayang : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val dataIntent = intent.getParcelableExtra<dcWayang>(
+            "kirimData", dcWayang::class.java
+        )
+
+        val _detFotoWayang = findViewById<ImageView>(R.id.detFotoWayang)
+        val _detNamaWayang = findViewById<TextView>(R.id.detNamaWayang)
+        val _detDetailWayang = findViewById<TextView>(R.id.detDetailWayang)
+
+        if (dataIntent != null){
+            Picasso.get()
+                .load(dataIntent.foto)
+                .into(_detFotoWayang)
+
+            _detNamaWayang.setText(dataIntent.nama)
+            _detDetailWayang.setText(dataIntent.deskripsi)
+        }
     }
+
 }
