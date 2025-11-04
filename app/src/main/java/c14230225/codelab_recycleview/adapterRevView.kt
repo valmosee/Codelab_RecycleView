@@ -1,9 +1,11 @@
 package c14230225.codelab_recycleview
 
+import android.telecom.Call
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -12,6 +14,14 @@ import com.squareup.picasso.Picasso
 
 class adapterRevView(private val listWayang: ArrayList<dcWayang>) : RecyclerView
     .Adapter<adapterRevView.ListViewHolder>(){
+        private lateinit var onItemClickCallback: OnItemClickCallBack
+
+    interface OnItemClickCallBack {
+        fun onItemClicked(data : dcWayang)
+    }
+    fun setOnItemClickCallBack(onItemClickCallback: OnItemClickCallBack){
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -37,11 +47,12 @@ class adapterRevView(private val listWayang: ArrayList<dcWayang>) : RecyclerView
             .into(holder._gambarWayang)
 
         holder._gambarWayang.setOnClickListener {
-            Toast.makeText(
-                holder.itemView.context,
-                wayang.nama,
-                Toast.LENGTH_LONG
-            ).show()
+//            Toast.makeText(
+//                holder.itemView.context,
+//                wayang.nama,
+//                Toast.LENGTH_LONG
+//            ).show()
+            onItemClickCallback.onItemClicked(listWayang[holder.adapterPosition])
         }
     }
 
