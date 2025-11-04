@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/gambarWayang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -24,8 +24,8 @@
         android:layout_marginStart="32dp"
         android:text="nama"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+        app:layout_constraintStart_toEndOf="@+id/gambarWayang"
+        app:layout_constraintTop_toTopOf="@+id/gambarWayang" />
 
     <TextView
         android:id="@+id/deskripsiWayang"
