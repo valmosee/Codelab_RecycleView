@@ -1,6 +1,7 @@
 package c14230225.codelab_recycleview
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -57,11 +58,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun TampilkanData(){
+        _rvWayang.layoutManager = LinearLayoutManager(this)
+
+        val adapterWayang = adapterRecView(arWayang)
+        _rvWayang.adapter = adapterWayang
 //        _rvWayang.layoutManager = StaggeredGridLayoutManager(
 //            2,
 //            LinearLayoutManager.VERTICAL
 //        )
-        _rvWayang.layoutManager = LinearLayoutManager(this)
-        _rvWayang.adapter = adapterRevView(arWayang)
+
+        adapterWayang.setOnItemClickCallBack(object : adapterRecView.OnItemClickCallBack{
+            override fun onItemClicked(data: dcWayang) {
+                Toast.makeText(
+                    this@MainActivity,
+                    data.nama,
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        })
     }
 }
