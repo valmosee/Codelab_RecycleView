@@ -30,4 +30,22 @@ class MainActivity : AppCompatActivity() {
         _rvWayang = findViewById<RecyclerView>(R.id.rvWayang)
     }
 
+    fun SiapkanData(){
+        _nama = resources.getStringArray(R.array.namaWayang)
+        _karakter = resources.getStringArray(R.array.karakterUtamaWayang)
+        _deskripsi = resources.getStringArray(R.array.deskripsiWayang)
+        _gambar = resources.getStringArray(R.array.gambarWayang)
+    }
+
+    fun TambahData(){
+        for (position in _nama.indices){
+            val data = dcWayang(
+                _gambar[position],
+                _nama[position],
+                _karakter[position],
+                _deskripsi[position],
+            )
+            arWayang.add(data)
+        }
+    }
 }
